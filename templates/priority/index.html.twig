@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StatutController!{% endblock %}
+
+{% block body %}
+
+    <section class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3>Il y a {{ prioritys | length }} statuts actuellement</h3>
+            <a href="{{ path('create_priority') }}" class="btn btn-primary">Créer une nouvelle priorité</a>
+        </div>
+
+        <div class="row">
+            {% for priority in prioritys %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ priority.name }}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

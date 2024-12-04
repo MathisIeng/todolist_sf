@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StatutController!{% endblock %}
+
+{% block body %}
+
+    <section class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3>Il y a {{ projects | length }} projets actuellement</h3>
+            <a href="{{ path('create_project') }}" class="btn btn-primary">Créer un nouveau projet</a>
+        </div>
+
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.name }}</h5>
+                            <p class="card-title">{{ project.description }}</p>
+                            <img class="card-title img-fluid" src="{{ project.image }}">
+                            <p class="card-title">{{ project.createdAt | date('d/m/y h:i:s') }}</p>
+                            {% for tag in project.tags %}
+                                <p class="btn btn-primary">{{ tag.name }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
